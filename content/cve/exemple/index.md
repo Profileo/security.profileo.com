@@ -1,202 +1,143 @@
 ---
-title: "[CVE-1] exemple"
-categories: core
+title: "[CVE-2023-27569]-[CVE-2023-27570] Improper neutralization of SQL parameters in Profileo : Tracking et Conversions (eo_tags) module for PrestaShop"
+categories: module
 author:
+- Profileo.com
+- TouchWeb.fr
 - Friends-Of-Presta.org
-meta: "CVE,PrestaShop,core"
-severity: "moderate (5.0)"
+meta: "CVE,PrestaShop,eo_tags"
+severity: "high (9.8)"
 date: 2023-03-15T15:24:08+01:00
 ---
 
-Not clear CSRF tokens upon login...
-
 ## Summary
 
-* **CVE ID**: [CVE-2023-25170](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-25170)
-* **Published at**: 2023-03-13
-* **Advisory source**: PrestaShop
+* **CVE ID**: CVE-2023-27569 and CVE-2023-27570
+* **Advisory source**: Friends-Of-Presta
 * **Vendor**: PrestaShop
-* **Product**: PrestaShop
-* **Impacted release**: >=1.7.0.0, 8.0.1
-* **Product author**: PrestaShop
-* **Weakness**: [CWE-352](https://cwe.mitre.org/data/definitions/352.html)
-* **Severity**: moderate (5.0)
+* **Product**: eo_tags
+* **Impacted release**: >= 1.2.0, < 1.4.19 (1.4.19 fixed the vulnerability)
+* **Product author**: Profileo
+* **Weakness**: [CWE-89](https://cwe.mitre.org/data/definitions/89.html)
+* **Severity**: critical (9.8)
 
 ## Description
 
-When authenticating users PrestaShop preserves session attributes because this does not clear CSRF tokens upon login.
+From version 1.2.0 published on Nov 17, 2017 to 1.4.18 published on Feb 21, 2023 (fixed in 1.4.19, published on Feb 28, 2023), an HTTP request can be forged with a compromized `_ga` cookie in order to exploit an insecure parameter in function `saveGanalyticsCookie()` and `gaParseCookie()`, which could lead to a SQL injection.
+
+From version 1.2.0 published on Nov 17, 2017 to 1.2.19 published on Oct 22, 2019 (fixed in 1.3.0), an HTTP request can be forged with a compromised User-Agent or Referer in order to exploit insecure parameters in `trackReferrer()` function, which could lead to a SQL injection. As from 1.2.1, the code has been migrated to classes/EoTagsStats.php (`EoTagsStats::setNewGuest()`) and the vulnerability now requires Privileges (PR) and user interaction (UI) to be exploited, reducing the severity to 8.0.
 
 ## CVSS base metrics
 
 * **Attack vector**: network
-* **Attack complexity**: high
+* **Attack complexity**: low
 * **Privilege required**: none
-* **User interaction**: required
+* **User interaction**: none
 * **Scope**: unchanged
-* **Confidentiality**: low
-* **Integrity**: low
-* **Availability**: low 
+* **Confidentiality**: high
+* **Integrity**: high
+* **Availability**: high
 
-**Vector string**: [CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L)
+**Vector string**: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
 
 ## Possible malicious usage
 
-This issue might enables [same-site attackers](https://canitakeyoursubdomain.name/) to bypass the CSRF protection mechanism by performing an attack similar to a session-fixation.
+* Obtain admin access
+* Technical and personal data leaks
 
-## Patch
+## Proof of concept
 
-This is generated between 8.0.1 and 8.0.2.
-
-```diff
-diff --git a/classes/Employee.php b/classes/Employee.php
-index 556f63401433..8116da0aeffe 100644
---- a/classes/Employee.php
-+++ b/classes/Employee.php
-@@ -25,7 +25,9 @@
-  */
- use PrestaShop\PrestaShop\Adapter\CoreException;
- use PrestaShop\PrestaShop\Adapter\ServiceLocator;
-+use PrestaShop\PrestaShop\Adapter\SymfonyContainer;
- use PrestaShop\PrestaShop\Core\Crypto\Hashing;
-+use PrestaShopBundle\Security\Admin\SessionRenewer;
- 
- /**
-  * Class EmployeeCore.
-@@ -488,6 +490,11 @@ public function logout()
-             Context::getContext()->cookie->write();
-         }
- 
-+        $sfContainer = SymfonyContainer::getInstance();
-+        if ($sfContainer !== null) {
-+            $sfContainer->get(SessionRenewer::class)->renew();
-+        }
-+
-         $this->id = null;
-     }
- 
-diff --git a/controllers/admin/AdminLoginController.php b/controllers/admin/AdminLoginController.php
-index 8b30e26173b7..9d49cf6fe2b2 100644
---- a/controllers/admin/AdminLoginController.php
-+++ b/controllers/admin/AdminLoginController.php
-@@ -24,6 +24,7 @@
-  * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
-  */
- use PrestaShop\PrestaShop\Core\Util\InternationalizedDomainNameConverter;
-+use PrestaShopBundle\Security\Admin\SessionRenewer;
- use Symfony\Component\HttpFoundation\IpUtils;
- 
- class AdminLoginControllerCore extends AdminController
-@@ -269,6 +270,8 @@ public function processLogin()
-                     $url = $this->context->link->getAdminLink($tab->class_name);
-                 }
- 
-+                $this->get(SessionRenewer::class)->renew();
-+
-                 Hook::exec(
-                     'actionAdminLoginControllerLoginAfter',
-                     [
-diff --git a/src/PrestaShopBundle/Resources/config/services/bundle/services.yml b/src/PrestaShopBundle/Resources/config/services/bundle/services.yml
-index bf57009c5810..0679d4ba8547 100644
---- a/src/PrestaShopBundle/Resources/config/services/bundle/services.yml
-+++ b/src/PrestaShopBundle/Resources/config/services/bundle/services.yml
-@@ -95,3 +95,8 @@ services:
-   PrestaShopBundle\DependencyInjection\RuntimeConstEnvVarProcessor:
-     public: false
-     tags: [ 'container.env_var_processor' ]
-+
-+  PrestaShopBundle\Security\Admin\SessionRenewer:
-+    arguments:
-+      $storage: "@security.csrf.token_storage"
-+    autowire: true
-diff --git a/src/PrestaShopBundle/Security/Admin/SessionRenewer.php b/src/PrestaShopBundle/Security/Admin/SessionRenewer.php
-new file mode 100644
-index 000000000000..28de6d63f213
---- /dev/null
-+++ b/src/PrestaShopBundle/Security/Admin/SessionRenewer.php
-@@ -0,0 +1,76 @@
-+<?php
-+/**
-+ * Copyright since 2007 PrestaShop SA and Contributors
-+ * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
-+ *
-+ * NOTICE OF LICENSE
-+ *
-+ * This source file is subject to the Open Software License (OSL 3.0)
-+ * that is bundled with this package in the file LICENSE.md.
-+ * It is also available through the world-wide-web at this URL:
-+ * https://opensource.org/licenses/OSL-3.0
-+ * If you did not receive a copy of the license and are unable to
-+ * obtain it through the world-wide-web, please send an email
-+ * to license@prestashop.com so we can send you a copy immediately.
-+ *
-+ * DISCLAIMER
-+ *
-+ * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
-+ * versions in the future. If you wish to customize PrestaShop for your
-+ * needs please refer to https://devdocs.prestashop.com/ for more information.
-+ *
-+ * @author    PrestaShop SA and Contributors <contact@prestashop.com>
-+ * @copyright Since 2007 PrestaShop SA and Contributors
-+ * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
-+ */
-+
-+declare(strict_types=1);
-+
-+namespace PrestaShopBundle\Security\Admin;
-+
-+use Symfony\Component\HttpFoundation\Session\SessionInterface;
-+use Symfony\Component\Security\Csrf\TokenStorage\ClearableTokenStorageInterface;
-+
-+/**
-+ * Because PS don't use Symfony login feature, we use this service to fix CVE-2022-24895. This class will be deprecated
-+ * when BO login/logout will use full Symfony process
-+ *
-+ * @internal
-+ */
-+final class SessionRenewer
-+{
-+    /**
-+     * @var ClearableTokenStorageInterface
-+     */
-+    private $storage;
-+
-+    /**
-+     * @var SessionInterface
-+     */
-+    private $session;
-+
-+    /**
-+     * @param ClearableTokenStorageInterface $storage
-+     * @param SessionInterface $session
-+     */
-+    public function __construct(ClearableTokenStorageInterface $storage, SessionInterface $session)
-+    {
-+        $this->storage = $storage;
-+        $this->session = $session;
-+    }
-+
-+    /**
-+     * Change PHPSESSID and clear tokens registered in session
-+     *
-+     * @return void
-+     */
-+    public function renew(): void
-+    {
-+        if (!$this->session->isStarted()) {
-+            $this->session->start();
-+        }
-+
-+        $this->session->migrate(true);
-+        $this->storage->clear();
-+    }
-+}
+```bash
+curl -v -H "User-agent:1','1');SELECT SLEEP(5);--" 'https://example.test/'
+curl -v -H "User-agent:1','1');SELECT SLEEP(5);--" 'https://example.test/?force_eo_tags_tracking=1'
+curl -v --cookie "PrestaShop-xyz" --cookie "_ga=1.1.1','1')%3BSELECT SLEEP(5)%3B--" 'https://example.test/order'
 ```
 
-## Other recommandations
+## Patch 
 
-* Upgrade PrestaShop beyong 8.0.2
+If present in `eo_tags.php`
+
+```diff
+--- a/eo_tags.php
++++ b/eo_tags.php
+@@ -1495,8 +1495,8 @@ class Eo_Tags extends Module
+                 $old_cid = $this->getAnalyticsCID($this->context->cart->id);
+                 $data = array(
+                     'id_cart' => $this->context->cart->id,
+-                    'cid'     => $cid,
+-                    'cookie'  => serialize($_COOKIE['_ga']),
++                    'cid'     => pSQL($cid),
++                    'cookie'  => pSQL(serialize($_COOKIE['_ga'])),
+                 );
+                 if (!$old_cid) {
+                     Db::getInstance()->insert('eo_tags_ga_cookie', $data);
+```
+
+```diff
+--- a/eo_tags.php
++++ b/eo_tags.php
+@@ -1356,11 +1356,11 @@ class Eo_Tags extends Module
+                 ';
+                 if ($referral = Db::getInstance()->getRow($sql2)) {
+                     $data = array(
+-                        'id_guest'     => $cookie->id_guest,
++                        'id_guest'     => (int)$cookie->id_guest,^M
+                         'ip_address'   => $referral['ip_address'],
+-                        'http_referer' => $referral['http_referer'],
+-                        'request_uri'  => $referral['request_uri'],
+-                        'user_agent'   => $user_agent,
++                        'http_referer' => pSQL($referral['http_referer']),^M
++                        'request_uri'  => pSQL($referral['request_uri']),^M
++                        'user_agent'   => pSQL($user_agent),^M
+                         'date_add'     => $referral['date_add'],
+                     );
+                 }
+@@ -1397,11 +1397,11 @@ class Eo_Tags extends Module
+             $request_uri = substr($request_uri, 0, 255);
+ 
+             $data = array(
+-                'id_guest'     => $cookie->id_guest,
++                'id_guest'     => (int)$cookie->id_guest,^M
+                 'ip_address'   => $ip_address,
+-                'http_referer' => $http_referer,
+-                'request_uri'  => $request_uri,
+-                'user_agent'   => $user_agent,
++                'http_referer' => pSQL($http_referer),^M
++                'request_uri'  => pSQL($request_uri),^M
++                'user_agent'   => pSQL($user_agent),^M
+                 'date_add'     => date('Y-m-d H:i:s'),
+             );
+         }
+```
+
+If present in `classes/EoTagsStats.php` `EoTagsStats::setNewGuest()`
+```diff
+--- a/classes/EoTagsStats.php
++++ b/classes/EoTagsStats.php
+@@ -26,7 +26,7 @@ class EoTagsStats {
+         $data = array(
+             'id_customer' => $id_customer,
+             'ip_address'  => $ip_address,
+-            'user_agent'  => $user_agent,
++            'user_agent'  => pSQL($user_agent),^M
+             'date_add'    => date('Y-m-d H:i:s'),
+         );
+```
+
+Profileo thanks TouchWeb.fr for its help discovering the vulnerability.
+
+## Timeline
+
+| Date | Action |
+| -- | -- |
+| 2023-02-24 | Discovery of the vulnerability by TouchWeb.fr |
+| 2023-02-25 | Vulnerability confirmed by Profileo |
+| 2023-02-28 | Patch created by Profileo and release of version 1.4.19 fixing the issue |
+| 2023-03-01 | Patch released to customers |
+| 2023-03-15 | Publication on security.profileo.com |
 
 ## Links
 
-* [PrestaShop product repository](https://github.com/PrestaShop/PrestaShop/security/advisories/GHSA-3g43-x7qr-96ph)
-* [Patch](https://github.com/PrestaShop/PrestaShop/commit/4a9e39c40bb1c9af3b2858601fc7aae10d2b49e1)
+* [Profileo](https://www.profileo.com/fr/)
+* [TouchWeb.fr](https://www.touchweb.fr/)
+* [National Vulnerability Database](https://nvd.nist.gov/vuln/detail/CVE-YYYY-XXXX)
