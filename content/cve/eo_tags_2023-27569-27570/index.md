@@ -81,14 +81,14 @@ If present in `eo_tags.php`
                  if ($referral = Db::getInstance()->getRow($sql2)) {
                      $data = array(
 -                        'id_guest'     => $cookie->id_guest,
-+                        'id_guest'     => (int)$cookie->id_guest,^M
++                        'id_guest'     => (int)$cookie->id_guest,
                          'ip_address'   => $referral['ip_address'],
 -                        'http_referer' => $referral['http_referer'],
 -                        'request_uri'  => $referral['request_uri'],
 -                        'user_agent'   => $user_agent,
-+                        'http_referer' => pSQL($referral['http_referer']),^M
-+                        'request_uri'  => pSQL($referral['request_uri']),^M
-+                        'user_agent'   => pSQL($user_agent),^M
++                        'http_referer' => pSQL($referral['http_referer']),
++                        'request_uri'  => pSQL($referral['request_uri']),
++                        'user_agent'   => pSQL($user_agent),
                          'date_add'     => $referral['date_add'],
                      );
                  }
@@ -97,14 +97,14 @@ If present in `eo_tags.php`
  
              $data = array(
 -                'id_guest'     => $cookie->id_guest,
-+                'id_guest'     => (int)$cookie->id_guest,^M
++                'id_guest'     => (int)$cookie->id_guest,
                  'ip_address'   => $ip_address,
 -                'http_referer' => $http_referer,
 -                'request_uri'  => $request_uri,
 -                'user_agent'   => $user_agent,
-+                'http_referer' => pSQL($http_referer),^M
-+                'request_uri'  => pSQL($request_uri),^M
-+                'user_agent'   => pSQL($user_agent),^M
++                'http_referer' => pSQL($http_referer),
++                'request_uri'  => pSQL($request_uri),
++                'user_agent'   => pSQL($user_agent),
                  'date_add'     => date('Y-m-d H:i:s'),
              );
          }
@@ -119,12 +119,13 @@ If present in `classes/EoTagsStats.php` `EoTagsStats::setNewGuest()`
              'id_customer' => $id_customer,
              'ip_address'  => $ip_address,
 -            'user_agent'  => $user_agent,
-+            'user_agent'  => pSQL($user_agent),^M
++            'user_agent'  => pSQL($user_agent),
              'date_add'    => date('Y-m-d H:i:s'),
          );
 ```
 
 Profileo thanks TouchWeb.fr for its help discovering the vulnerability.
+Feel free to contact security/at/profileo.com if you wish to receive a PHP script to automatically detect and patch this vulnerability on your website.
 
 ## Timeline
 
