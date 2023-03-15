@@ -1,3 +1,50 @@
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = "https://security.profileo.com"
+languageCode = "fr-fr"
+title = "Profileo security"
+theme = "hugo-whisper-theme"
+
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClasses = true
+summaryLength = 3
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.55.0"
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "FAQ"
+    url = "/faq"
+    weight = 2
+
+[[menu.main]]
+    name = "CVE"
+    url = "/cve"
+    weight = 3
+
+[params]
+  google_analytics_id="G-FKJVT9BC01"
+  homepage_intro = 'Profileo Security intro'
+
+  enable_anchor_link = true
+
+  [params.homepage_meta_tags]
+    meta_description = "Profileo security"
+    meta_og_title = "Profileo security"
+    meta_og_type = "website"
+    meta_og_url = "https://security.profileo.com"
+    meta_og_image = "https://www.profileo.com/img/eocontent/1589354942_laptop.webp"
+    meta_og_description = "Profileo security."
+    meta_twitter_card = "summary"
+    meta_twitter_site = "@profileo"
+    meta_twitter_creator = "@profileo"
+
+  [params.logo]
+      mobile = "/images/logo-mobile.svg"
+      standard  = "/images/logo.svg"
