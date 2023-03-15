@@ -140,4 +140,5 @@ Profileo thanks TouchWeb.fr for its help discovering the vulnerability.
 
 * [Profileo](https://www.profileo.com/fr/)
 * [TouchWeb.fr](https://www.touchweb.fr/)
-* [National Vulnerability Database](https://nvd.nist.gov/vuln/detail/CVE-YYYY-XXXX)
+* [National Vulnerability Database - CVE-2023-27569](https://nvd.nist.gov/vuln/detail/CVE-2023-27569)
+* [National Vulnerability Database - CVE-2023-27570](https://nvd.nist.gov/vuln/detail/CVE-2023-27570)
