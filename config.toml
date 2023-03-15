@@ -2,6 +2,7 @@ baseURL = "https://security.profileo.com"
 languageCode = "fr-fr"
 title = "Profileo security"
 theme = "hugo-whisper-theme"
+copyright = "Copyright 2023 - Profileo.com est une marque du groupe Profileo"
 
 pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
@@ -35,7 +36,7 @@ summaryLength = 3
   enable_anchor_link = true
 
   [params.homepage_meta_tags]
-    meta_description = "Profileo security"
+    meta_description = "Explore Profileo Security's advisories, vulnerability reporting guidelines, and security policies. Stay informed and collaborate with our security team to enhance the safety of the digital environment."
     meta_og_title = "Profileo security"
     meta_og_type = "website"
     meta_og_url = "https://security.profileo.com"

@@ -3,8 +3,8 @@ title: "Contact"
 date: 2023-03-15T15:27:10+01:00
 ---
 
-Comment nous contacter en cas de détection d'un problème de sécurité.
+How to contact us if you detect a security issue?
 
 ## Mail
 
-Envoyez un mail à [security@profileo.com](mailto:security@profileo.com)
+Send an email to [security@profileo.com](mailto:security@profileo.com)
