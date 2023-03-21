@@ -1,11 +1,10 @@
 ---
 title: "Recrudescence des piratages via les comptes BackOffice"
-categories: prestashop
+categories: advisories
 author:
 - Profileo.com
-meta: "CVE,PrestaShop,eo_tags"
-severity: "high (9.8)"
-date: 2023-03-21T11:24:00+01:00
+meta: "PrestaShop,backoffice,sécurité,2FA,employés"
+date: 2023-03-21T15:49:24+01:00
 ---
 
 ## Introduction

@@ -19,25 +19,33 @@ defaultContentLanguage = 'fr'
   [languages.fr]
     languageCode = 'fr-FR'
     languageName = 'Français'
+    languageNameShort = 'fr'
+    languageFlag = "🇫🇷"
     title = 'Profileo Sécurité'
     weight = 1
     copyright = "Copyright 2023 - Profileo.com est une marque du groupe Profileo"
     [languages.fr.menu]
 [[languages.fr.menu.main]]
       name = "Accueil"
-      url = "/"
+      url = "/fr/"
       weight = 1
 [[languages.fr.menu.main]]
       name = "FAQ"
-      url = "/faq"
+      url = "/fr/faq"
       weight = 2
 [[languages.fr.menu.main]]
-      name = "CVE et vulnérabilités"
-      url = "/cve"
+      name = "Annonces"
+      url = "/fr/advisories"
       weight = 3
+[[languages.fr.menu.main]]
+      name = "CVE"
+      url = "/fr/cve"
+      weight = 4
   [languages.en]
     languageCode = 'en-US'
     languageName = 'English'
+    languageNameShort = 'en'
+    languageFlag = "🇬🇧"
     title = 'Profileo security'
     weight = 2
     copyright = "Copyright 2023 - Profileo.com is a brand of the Profileo Group"
@@ -51,9 +59,13 @@ defaultContentLanguage = 'fr'
       url = "/faq"
       weight = 2
 [[languages.en.menu.main]]
-      name = "CVE and advisories"
-      url = "/cve"
+      name = "Advisories"
+      url = "/advisories"
       weight = 3
+[[languages.en.menu.main]]
+      name = "CVE"
+      url = "/cve"
+      weight = 4
 
 
 [params]
