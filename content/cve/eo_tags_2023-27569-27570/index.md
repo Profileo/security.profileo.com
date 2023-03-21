@@ -10,9 +10,12 @@ severity: "high (9.8)"
 date: 2023-03-15T15:24:08+01:00
 ---
 
+In the module Tracking et Conversions (eo_tags) prior to version 1.4.19, an anonymous user can perform an SQL injection attack.
+
 ## Summary
 
 * **CVE ID**: CVE-2023-27569 and CVE-2023-27570
+* **Published at**: 2023-03-15
 * **Advisory source**: Friends-Of-Presta
 * **Vendor**: PrestaShop
 * **Product**: eo_tags
@@ -127,6 +130,12 @@ If present in `classes/EoTagsStats.php` `EoTagsStats::setNewGuest()`
 Profileo thanks TouchWeb.fr for its help discovering the vulnerability.
 Feel free to contact security/at/profileo.com if you wish to receive a PHP script to automatically detect and patch this vulnerability on your website.
 
+## Other recommandations
+
+* Upgrade PrestaShop beyond 1.7.8.8 (and 8.0.1) to disable multiquery executions (separated by ";").
+* Change the default database prefix ps_ by a new longer arbitrary prefix. Nethertheless, be warned that this is useless against blackhat with DBA senior skill because of a design vulnerability in DBMS
+* Activate OWASP 942's rules on your WAF (Web application firewall), be warned that you will probably break your backoffice and you will need to pre-configure some bypasses against these set of rules.
+
 ## Timeline
 
 | Date | Action |
@@ -141,5 +150,5 @@ Feel free to contact security/at/profileo.com if you wish to receive a PHP scrip
 
 * [Profileo](https://www.profileo.com/fr/)
 * [TouchWeb.fr](https://www.touchweb.fr/)
-* [National Vulnerability Database - CVE-2023-27569](https://nvd.nist.gov/vuln/detail/CVE-2023-27569)
-* [National Vulnerability Database - CVE-2023-27570](https://nvd.nist.gov/vuln/detail/CVE-2023-27570)
+* [National Vulnerability Database CVE-2023-27569](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-27569)
+* [National Vulnerability Database CVE-2023-27570](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-27570)
