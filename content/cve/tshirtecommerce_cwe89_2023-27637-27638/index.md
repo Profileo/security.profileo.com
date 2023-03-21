@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "[CVE-2023-27637][CVE-2023-27638][CWE-89] Improper neutralization of SQL parameters in module Prestashop Custom Product Designer (tshirtecommerce) for PrestaShop"
 categories: module
 author:
@@ -8,6 +7,7 @@ author:
 - Friends-Of-Presta.org
 meta: "CVE,PrestaShop,tshirtecommerce"
 severity: "high (9.8)"
+date: 2023-03-21T13:54:00+01:00
 ---
 
 In the module Custom Product Designer (tshirtecommerce), an anonymous user can perform an SQL injection attack. The vulnerability is actively exploited by bots. As the module doesn't seems to be maintained since 2019, it's strongly suggested to remove it.
