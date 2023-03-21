@@ -14,24 +14,50 @@ summaryLength = 3
     extended = true
     min = "0.55.0"
 
-[[menu.main]]
-    name = "Home"
-    url = "/"
+defaultContentLanguage = 'fr'
+[languages]
+  [languages.fr]
+    languageCode = 'fr-FR'
+    languageName = 'Français'
+    title = 'Profileo Sécurité'
     weight = 1
-
-[[menu.main]]
-    name = "FAQ"
-    url = "/faq"
+    copyright = "Copyright 2023 - Profileo.com est une marque du groupe Profileo"
+    [languages.fr.menu]
+[[languages.fr.menu.main]]
+      name = "Accueil"
+      url = "/"
+      weight = 1
+[[languages.fr.menu.main]]
+      name = "FAQ"
+      url = "/faq"
+      weight = 2
+[[languages.fr.menu.main]]
+      name = "CVE et vulnérabilités"
+      url = "/cve"
+      weight = 3
+  [languages.en]
+    languageCode = 'en-US'
+    languageName = 'English'
+    title = 'Profileo security'
     weight = 2
+    copyright = "Copyright 2023 - Profileo.com is a brand of the Profileo Group"
+    [languages.en.menu]
+[[languages.en.menu.main]]
+      name = "Home"
+      url = "/"
+      weight = 1
+[[languages.en.menu.main]]
+      name = "FAQ"
+      url = "/faq"
+      weight = 2
+[[languages.en.menu.main]]
+      name = "CVE and advisories"
+      url = "/cve"
+      weight = 3
 
-[[menu.main]]
-    name = "CVE"
-    url = "/cve"
-    weight = 3
 
 [params]
   google_analytics_id="G-FKJVT9BC01"
-  homepage_intro = 'Profileo Security intro'
 
   enable_anchor_link = true
 
