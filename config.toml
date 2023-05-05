@@ -2,6 +2,7 @@ baseURL = "https://security.profileo.com"
 languageCode = "fr-fr"
 title = "Profileo security"
 theme = "hugo-whisper-theme"
+
 copyright = "Copyright 2023 - Profileo.com est une marque du groupe Profileo"
 
 pygmentsCodeFences = true
@@ -14,10 +15,10 @@ summaryLength = 3
     extended = true
     min = "0.55.0"
 
-defaultContentLanguage = 'fr'
+defaultContentLanguage = 'en'
 [languages]
   [languages.fr]
-    languageCode = 'fr-FR'
+    languageCode = 'fr-fr'
     languageName = 'Français'
     languageNameShort = 'fr'
     languageFlag = "🇫🇷"
@@ -42,7 +43,7 @@ defaultContentLanguage = 'fr'
       url = "/fr/cve"
       weight = 4
   [languages.en]
-    languageCode = 'en-US'
+    languageCode = 'en-us'
     languageName = 'English'
     languageNameShort = 'en'
     languageFlag = "🇬🇧"

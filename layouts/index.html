@@ -26,14 +26,14 @@
         </div>
       </div>
       <div class="col-12">
-        <a class="button button-primary main-menu mb-2" href="/faq">
-          FAQ
+        <a class="button button-primary main-menu mb-2" href="/{{ if ne .Lang "en" }}{{ .Lang }}/{{end}}faq">
+          {{ i18n "faq" }}
         </a>
-        <a class="button button-primary main-menu mb-2" href="/advisories">
-          Advisories
+        <a class="button button-primary main-menu mb-2" href="/{{ if ne .Lang "en" }}{{ .Lang }}/{{end}}advisories">
+          {{ i18n "advisories" }}
         </a>
-        <a class="button button-primary main-menu mb-2" href="/cve">
-          CVE
+        <a class="button button-primary main-menu mb-2" href="/{{ if ne .Lang "en" }}{{ .Lang }}/{{end}}cve">
+          {{ i18n "cve" }}
         </a>
       </div>
     </div>

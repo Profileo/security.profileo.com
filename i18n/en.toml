@@ -1,0 +1,8 @@
+[faq]
+other = "FAQ"
+
+[advisories]
+other = "Advisories"
+
+[cve]
+other = "CVE"
