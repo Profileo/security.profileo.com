@@ -1,4 +1,4 @@
-<div id="main-menu" class="main-menu">
+<div id="main-menu-mobile" class="main-menu-mobile">
   <ul>
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
@@ -8,8 +8,7 @@
       </a>
     </li>
     {{end}}
-
-    <span class="menu-item-flags">
+    <li class="menu-item-mobile-flags">
     {{ $siteLanguages := site.Languages}}
     {{ $pageLang := .Page.Lang}}
     {{- range .Page.AllTranslations }}
@@ -20,7 +19,6 @@
             {{- end }}
         {{- end }}
     {{- end }}
-    </span>
-
+    </li>
   </ul>
 </div>
