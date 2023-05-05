@@ -19,6 +19,10 @@
 
   {{ block "header_css" . }}{{ end }}
 
+  {{ range .Site.Params.custom_css -}}
+      <link rel="stylesheet" href="{{ . | absURL }}">
+  {{- end }}
+
 </head>
 
 <body class='page {{ block "body_classes" . }}{{ end }}'>
