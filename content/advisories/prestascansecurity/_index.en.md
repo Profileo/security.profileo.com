@@ -80,7 +80,7 @@ As the security targets all kinds of merchants, using sometimes outdated version
 
 ### Main contributors
 
-This module is fueled by the collective energy of the members of the Friends Of PrestaShop security cell. Here is the list of the most significant contributors in terms of security research, publication of CVE, or development:
+This module is fueled by the collective energy of the members of the Friends Of Presta security cell. Here is the list of the most significant contributors in terms of security research, publication of CVE, or development:
 
 {{< inline_images_prestascansecurity
 class="center-img head-img">}}
