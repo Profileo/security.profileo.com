@@ -6,10 +6,6 @@ author:
 meta: "PrestaShop,security,module,prestascan,scan,malware,virus,hack"
 date: 2023-05-05T17:20:48+01:00
 ---
-{{< image
-src="/images/prestascansecurity/prestascansecurity-logo.png"
-alt="PrestaScan Security Logo"
-class="center-img head-img">}}
 
 In the ever-evolving digital landscape, ensuring the security of your online store has become more critical than ever. As a company committed to protecting our customers from various threats, we developed **PrestaScan Security**, a powerful **PrestaShop module** designed to identify malware and known vulnerabilities in the PrestaShop core and its modules.
 
@@ -17,6 +13,10 @@ Thanks to the support of the Friends Of Presta association (FOP), we decided not
 
 The module is easy to install and use, keeping you updated on the latest security threats to your website.  
 
+{{< image
+src="/images/prestascansecurity/prestascansecurity-logo.png"
+alt="PrestaScan Security Logo"
+class="center-img head-img">}}
 
 ## Features
 
@@ -77,3 +77,10 @@ As the security targets all kinds of merchants, using sometimes outdated version
 | **1.6.1.X** (1.6.1.24) | OK | Stable
 | **1.6.0.X** (1.6.0.9) | OK | Stable
 | **1.5** | In progress (expected in 1.1.2)  | Not supported as of now due to JS issues
+
+### Main contributors
+
+This module is fueled by the collective energy of the members of the Friends Of PrestaShop security cell. Here is the list of the most significant contributors in terms of security research, publication of CVE, or development:
+
+{{< inline_images_prestascansecurity
+class="center-img head-img">}}

@@ -6,16 +6,17 @@ author:
 meta: "PrestaShop,sécurité,module,prestascan,scan,logiciel malveillant,virus,piratage"
 date: 2023-05-05T17:20:48+01:00
 ---
-{{< image
-src="/images/prestascansecurity/prestascansecurity-logo.png"
-alt="Logo PrestaScan Security"
-class="center-img head-img">}}
 
 Dans un paysage numérique en constante évolution, assurer la sécurité de votre boutique en ligne est devenu plus crucial que jamais. En tant qu'entreprise engagée à protéger nos clients contre diverses menaces, nous avons développé **PrestaScan Security**, un puissant **module PrestaShop** conçu pour identifier les logiciels malveillants et les vulnérabilités connues dans le noyau PrestaShop et ses modules.
 
 Grâce au soutien de l'association Friends Of Presta (FOP), nous avons décidé non seulement de **partager ce module avec l'ensemble de la communauté PrestaShop, mais aussi de le rendre gratuit**. PrestaScan Security est désormais un module gratuit et open source qui offre à tous les utilisateurs le meilleur système d'alerte possible pour leurs boutiques en ligne.
 
 Le module est facile à installer et à utiliser, vous permettant de rester informé des dernières menaces de sécurité pour votre site Web.
+
+{{< image
+src="/images/prestascansecurity/prestascansecurity-logo.png"
+alt="Logo PrestaScan Security"
+class="center-img head-img">}}
 
 ## Fonctionnalités
 
@@ -76,3 +77,10 @@ Comme la sécurité cible tous les types de commerçants, utilisant parfois des 
 | **1.6.1.X** (1.6.1.24) | OK | Stable
 | **1.6.0.X** (1.6.0.9) | OK | Stable
 | **1.5** | En cours (prévu en 1.1.2)  | Non pris en charge pour le moment en raison de problèmes JS
+
+### Contributeurs principaux
+
+Ce module est alimenté par l'énergie collective des membres de la cellule sécurité de Friends Of Presta. Voici la liste des contributeurs les plus significatifs, que ce soit en termes de recherche, de publication ou de développement :
+
+{{< inline_images_prestascansecurity
+class="center-img head-img">}}
