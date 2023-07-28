@@ -182,7 +182,7 @@ For more information, visit the [PrestaScan Security GitHub repository](https://
 
 # Compatibility
 
-As the security targets all kinds of merchants, using sometimes outdated versions of PrestaShop, we do our best for the moment to keep the module at least compatible with PrestaShop 1.6, 1.7, and 8. Additional work is required to support PS 1.5.
+As the security targets all kinds of merchants, using sometimes outdated versions of PrestaShop, we do our best for the moment to keep the module at least compatible with PrestaShop 1.5, 1.6, 1.7, and 8.
 
 | PrestaShop version tested | Status | Comments |
 | -------- | ------ | ------ |
@@ -190,4 +190,4 @@ As the security targets all kinds of merchants, using sometimes outdated version
 | **1.7.X** (1.7.8.8) | OK | Stable
 | **1.6.1.X** (1.6.1.24) | OK | Stable
 | **1.6.0.X** (1.6.0.9) | OK | Stable
-| **1.5** | In progress (expected in 1.1.2)  | Not supported as of now due to JS issues
+| **1.5** | OK since 1.1.2 | Stable (but will not be actively maintained)
