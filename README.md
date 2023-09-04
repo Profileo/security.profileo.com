@@ -6,8 +6,8 @@
 Clone the repo and the submodule:
 
 ```bash
-git clone git@github.com:Profileo/profileo.git
-cd profileo
+git clone git@github.com:Profileo/security.profileo.com.git
+cd security.profileo.com
 git submodule update --init
 ```
 
