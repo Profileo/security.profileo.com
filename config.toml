@@ -1,6 +1,6 @@
 baseURL = "https://security.profileo.com"
 languageCode = "fr-fr"
-title = "Profileo security"
+title = "Profileo security • security.profileo.com"
 theme = "hugo-whisper-theme"
 
 copyright = "Copyright 2023 - Profileo.com est une marque du groupe Profileo"
@@ -22,7 +22,7 @@ defaultContentLanguage = 'en'
     languageName = 'Français'
     languageNameShort = 'fr'
     languageFlag = "🇫🇷"
-    title = 'Profileo Sécurité'
+    title = 'Profileo Sécurité • security.profileo.com'
     weight = 1
     copyright = "Copyright 2023 - Profileo.com est une marque du groupe Profileo"
     [languages.fr.menu]
@@ -47,7 +47,7 @@ defaultContentLanguage = 'en'
     languageName = 'English'
     languageNameShort = 'en'
     languageFlag = "🇬🇧"
-    title = 'Profileo security'
+    title = 'Profileo security • security.profileo.com'
     weight = 2
     copyright = "Copyright 2023 - Profileo.com is a brand of the Profileo Group"
     [languages.en.menu]
@@ -78,7 +78,7 @@ defaultContentLanguage = 'en'
 
   [params.homepage_meta_tags]
     meta_description = "Explore Profileo Security's advisories, vulnerability reporting guidelines, and security policies. Stay informed and collaborate with our security team to enhance the safety of the digital environment."
-    meta_og_title = "Profileo security"
+    meta_og_title = "Profileo security • security.profileo.com"
     meta_og_type = "website"
     meta_og_url = "https://security.profileo.com"
     meta_og_image = "https://www.profileo.com/img/eocontent/1589354942_laptop.webp"
