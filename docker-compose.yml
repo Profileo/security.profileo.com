@@ -3,7 +3,7 @@ version: '3.0'
 services:
     hugo:
         image: klakegg/hugo:0.101.0-ext
-        command: server --appendPort=false
+        command: server --appendPort=false --liveReloadPort=80
         volumes:
             - ".:/src"
         ports:
