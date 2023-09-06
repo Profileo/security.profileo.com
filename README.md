@@ -20,3 +20,7 @@ Build the static site:
 ```bash
 hugo server
 ```
+
+## Install with Docker
+
+[Click here](DOCKER.md) to get started using Docker environment.
