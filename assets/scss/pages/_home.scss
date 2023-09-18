@@ -1,0 +1,21 @@
+.page-home {
+  .home-container {
+    max-width: 600px;
+    margin: 0;
+  }
+  .title {
+    font-family: $font-family-base;
+    letter-spacing: -0.5px;
+  }
+  .content {
+    color: #383f45;
+    p, li {
+      font-weight: normal;
+      font-size: 1.2rem;
+      line-height: 1.5em;
+    }
+    li {
+      text-align: initial;
+    }
+  }
+}

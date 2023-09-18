@@ -17,7 +17,7 @@
 
 {{ define "main" }}
 <div class="strip">
-  <div class="container pt-4 pb-16">
+  <div class="mb-16 home-container">
     <div class="row">
       <div class="col-12">
         <h1 class="title">{{ .Title | default .Site.Title }}</h1>
@@ -26,15 +26,17 @@
         </div>
       </div>
       <div class="col-12">
-        <a class="button button-primary main-menu mb-2" href="/{{ if ne .Lang "en" }}{{ .Lang }}/{{end}}faq">
+        <div class="d-flex">
+          <a class="button button-primary mb-2 mr-1" href="/{{ if ne .Lang "en" }}{{ .Lang }}/{{end}}faq">
           {{ i18n "faq" }}
-        </a>
-        <a class="button button-primary main-menu mb-2" href="/{{ if ne .Lang "en" }}{{ .Lang }}/{{end}}advisories">
+          </a>
+          <a class="button button-primary mb-2 mr-1" href="/{{ if ne .Lang "en" }}{{ .Lang }}/{{end}}advisories">
           {{ i18n "advisories" }}
-        </a>
-        <a class="button button-primary main-menu mb-2" href="/{{ if ne .Lang "en" }}{{ .Lang }}/{{end}}cve">
+          </a>
+          <a class="button button-primary mb-2 mr-1" href="/{{ if ne .Lang "en" }}{{ .Lang }}/{{end}}cve">
           {{ i18n "cve" }}
-        </a>
+          </a>
+        </div>
       </div>
     </div>
   </div>
