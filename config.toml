@@ -8,7 +8,7 @@ copyright = "Copyright 2023 - Profileo.com est une marque du groupe Profileo"
 pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
 pygmentsUseClasses = true
-summaryLength = 3
+summaryLength = 30
 
 [module]
   [module.hugoVersion]
