@@ -6,6 +6,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>{{ block "title" . }}{{ .Params.short_title | default (.Title | truncate 40) }} - {{ .Site.Title }}{{ end }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ partial "robots.html" . }}
   {{ block "meta_tags" . }}{{end}}
   <link rel="icon" href="{{ "favicon.ico" | absURL}}">
 

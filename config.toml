@@ -90,3 +90,7 @@ defaultContentLanguage = 'en'
   [params.logo]
       mobile = "/images/logo-mobile.svg"
       standard  = "/images/logo.svg"
+
+  [params.robots]
+    index = true
+    follow = true
