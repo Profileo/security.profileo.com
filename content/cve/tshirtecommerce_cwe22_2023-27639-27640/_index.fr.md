@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[CVE-2023-27639][CVE-2023-27640][CWE-22] Multiple path traversal in Custom Product Designer (tshirtecommerce) module for PrestaShop"
+short_title: "CVE-2023-27639 - CVE-2023-27640 - CWE-22"
 categories: module
 author:
 - Profileo

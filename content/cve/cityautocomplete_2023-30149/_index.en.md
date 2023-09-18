@@ -1,5 +1,6 @@
 ---
 title: "[CVE-2023-30149] Improper neutralization of SQL parameter in the City Autocomplete (cityautocomplete) module from ebewe.net for PrestaShop"
+short_title: "CVE-2023-30149"
 categories: module
 author:
 - Profileo.com

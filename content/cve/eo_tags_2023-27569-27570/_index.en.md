@@ -1,5 +1,6 @@
 ---
 title: "[CVE-2023-27569]-[CVE-2023-27570] Improper neutralization of SQL parameters in Profileo : Tracking et Conversions (eo_tags) module for PrestaShop"
+short_title: "CVE-2023-27569 - CVE-2023-27570"
 categories: module
 author:
 - Profileo.com

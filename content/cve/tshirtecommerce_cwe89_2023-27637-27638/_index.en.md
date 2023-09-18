@@ -1,5 +1,6 @@
 ---
 title: "[CVE-2023-27637][CVE-2023-27638][CWE-89] Improper neutralization of SQL parameters in module Prestashop Custom Product Designer (tshirtecommerce) for PrestaShop"
+short_title: "CVE-2023-27637 - CVE-2023-27638 - CWE-89"
 categories: module
 author:
 - Profileo.com
