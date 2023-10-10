@@ -68,6 +68,10 @@ defaultContentLanguage = 'en'
       url = "/cve"
       weight = 4
 
+[markup]
+  [markup.goldmark]
+      [markup.goldmark.extensions]
+        linkify = false
 
 [params]
   google_analytics_id="G-FKJVT9BC01"
