@@ -117,7 +117,7 @@ Patches listed below concerns the two SQL injections discovered.
 
 ## Links
 
-* [Module Custom Product Designer (tshirtecommerce)](https://codecanyon.net/item/prestashop-custom-product-designer/19202018)
+* https://codecanyon.net/item/prestashop-custom-product-designer/19202018
 * [Editor Website : T-Shirt eCommerce](https://tshirtecommerce.com/)
 * [National Vulnerability Database CVE-2023-27637](https://nvd.nist.gov/vuln/detail/CVE-2023-27637)
 * [National Vulnerability Database CVE-2023-27638](https://nvd.nist.gov/vuln/detail/CVE-2023-27638)
