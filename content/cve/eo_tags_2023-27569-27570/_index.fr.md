@@ -1,57 +1,59 @@
 ---
-title: "[CVE-2023-27569]-[CVE-2023-27570] Improper neutralization of SQL parameters in Profileo : Tracking et Conversions (eo_tags) module for PrestaShop"
+title: "[CVE-2023-27569]-[CVE-2023-27570] Neutralisation incorrecte des paramètres SQL dans Profileo : module Tracking et Conversions (eo_tags) pour PrestaShop"
 short_title: "CVE-2023-27569 - CVE-2023-27570"
 categories: module
 author:
 - Profileo.com
 - TouchWeb.fr
 - Friends-Of-Presta.org
-meta: "CVE,PrestaShop,eo_tags"
-severity: "high (9.8)"
+meta: "CVE,PrestaShop,module,eo_tags"
+severity: "critical (9.8)"
 date: 2023-03-15T15:24:08+01:00
 ---
 
-In the module Tracking et Conversions (eo_tags) prior to version 1.4.19, an anonymous user can perform an SQL injection attack.
+Dans le module Tracking et Conversions (eo_tags) avant la version 1.4.19, un utilisateur anonyme peut effectuer une attaque d'injection SQL.
 
-## Summary
+## Résumé
 
-* **CVE ID**: CVE-2023-27569 and CVE-2023-27570
-* **Published at**: 2023-03-15
-* **Advisory source**: Friends-Of-Presta
-* **Vendor**: PrestaShop
-* **Product**: eo_tags
-* **Impacted release**: >= 1.2.0, < 1.4.19 (1.4.19 fixed the vulnerability)
-* **Product author**: Profileo
-* **Weakness**: [CWE-89](https://cwe.mitre.org/data/definitions/89.html)
-* **Severity**: critical (9.8)
+* **ID CVE**: [CVE-2023-27569](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-27569), [CVE-2023-27570](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-27570)
+* **Publié le**: 2023-03-15
+* **Source de l'avis**: security.profileo.com
+* **Plateforme**: PrestaShop
+* **Produit**: eo_tags
+* **Version impactée**: >= 1.2.0, < 1.4.19 (la vulnérabilité est corrigée dans la version 1.4.19)
+* **Auteur du produit**: Profileo
+* **Faiblesse**: [CWE-89](https://cwe.mitre.org/data/definitions/89.html)
+* **Sévérité**: critique (9.8)
 
 ## Description
 
-From version 1.2.0 published on Nov 17, 2017 to 1.4.18 published on Feb 21, 2023 (fixed in 1.4.19, published on Feb 28, 2023), an HTTP request can be forged with a compromized `_ga` cookie in order to exploit an insecure parameter in function `saveGanalyticsCookie()` and `gaParseCookie()`, which could lead to a SQL injection.
+De la version 1.2.0 publiée le 17 novembre 2017 à la version 1.4.18 publiée le 21 février 2023 (corrigée dans la version 1.4.19, publiée le 28 février 2023), une requête HTTP peut être forgée avec un cookie `_ga` compromis afin d'exploiter un paramètre non sécurisé dans les fonctions `saveGanalyticsCookie()` et `gaParseCookie()`, pouvant conduire à une injection SQL.
 
-From version 1.2.0 published on Nov 17, 2017 to 1.2.19 published on Oct 22, 2019 (fixed in 1.3.0), an HTTP request can be forged with a compromised User-Agent or Referer in order to exploit insecure parameters in `trackReferrer()` function, which could lead to a SQL injection. As from 1.2.1, the code has been migrated to classes/EoTagsStats.php (`EoTagsStats::setNewGuest()`) and the vulnerability now requires Privileges (PR) and user interaction (UI) to be exploited, reducing the severity to 8.0.
+De la version 1.2.0 publiée le 17 novembre 2017 à la version 1.2.19 publiée le 22 octobre 2019 (corrigée dans la version 1.3.0), une requête HTTP peut être forgée avec un User-Agent ou un Referer compromis afin d'exploiter des paramètres non sécurisés dans la fonction `trackReferrer()`, pouvant conduire à une injection SQL. À partir de la version 1.2.1, le code a été migré vers classes/EoTagsStats.php (`EoTagsStats::setNewGuest()`) et la vulnérabilité nécessite désormais des privilèges (PR) et une interaction utilisateur (UI) pour être exploitée, réduisant la sévérité à 8.0.
 
-## CVSS base metrics
+Cette exploitation utilise des cookies (et des referers) pour effectuer l'attaque, donc le nom du module sera caché pendant l'exploitation, vous ne pourrez donc pas identifier cette vulnérabilité dans vos logs frontend conventionnels. **Vous ne verrez que "GET /" ou "POST /" dans vos logs frontend conventionnels.** Le referer compromis sera visible dans vos logs d'accès, mais vous ne pourrez pas voir le cookie compromis.
 
-* **Attack vector**: network
-* **Attack complexity**: low
-* **Privilege required**: none
-* **User interaction**: none
-* **Scope**: unchanged
-* **Confidentiality**: high
-* **Integrity**: high
-* **Availability**: high
+## Métriques de base CVSS
 
-**Vector string**: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+* **Vecteur d'attaque**: réseau
+* **Complexité de l'attaque**: faible
+* **Privilèges requis**: aucun
+* **Interaction de l'utilisateur**: aucune
+* **Portée**: inchangée
+* **Confidentialité**: haute
+* **Intégrité**: haute
+* **Disponibilité**: haute
 
-## Possible malicious usage
+**Chaîne de vecteur**: [CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)
 
-* Obtain admin access
-* Technical and personal data leaks
+## Utilisation malveillante possible
 
-## Patch 
+* Obtenir un accès administrateur
+* Fuites de données techniques et personnelles
 
-If present in `eo_tags.php`
+## Correctif
+
+Si présent dans `eo_tags.php`
 
 ```diff
 --- a/eo_tags.php
@@ -106,7 +108,7 @@ If present in `eo_tags.php`
          }
 ```
 
-If present in `classes/EoTagsStats.php` `EoTagsStats::setNewGuest()`
+Si présent dans `classes/EoTagsStats.php` `EoTagsStats::setNewGuest()`
 ```diff
 --- a/classes/EoTagsStats.php
 +++ b/classes/EoTagsStats.php
@@ -120,28 +122,28 @@ If present in `classes/EoTagsStats.php` `EoTagsStats::setNewGuest()`
          );
 ```
 
-Profileo thanks TouchWeb.fr for its help discovering the vulnerability.
-Feel free to contact security/at/profileo.com if you wish to receive a PHP script to automatically detect and patch this vulnerability on your website.
+Profileo remercie TouchWeb.fr pour son aide pour la découverte et l'analyse de la vulnérabilité.
+N'hésitez pas à contacter security/at/profileo.com si vous souhaitez recevoir un script PHP pour détecter et corriger automatiquement cette vulnérabilité sur votre site web.
 
-## Other recommandations
+## Autres recommandations
 
-* Upgrade PrestaShop beyond 1.7.8.8 (and 8.0.1) to disable multiquery executions (separated by ";").
-* Change the default database prefix ps_ by a new longer arbitrary prefix. Nethertheless, be warned that this is useless against blackhat with DBA senior skill because of a design vulnerability in DBMS
-* Activate OWASP 942's rules on your WAF (Web application firewall), be warned that you will probably break your backoffice and you will need to pre-configure some bypasses against these set of rules.
+* Mettez à jour PrestaShop vers la dernière version pour désactiver les exécutions de multi-requêtes (séparées par “;”) - sachez que cette fonctionnalité **NE** protégera **PAS** votre BOUTIQUE contre l'injection SQL qui utilise la clause UNION pour voler des données.
+* Changez le préfixe de base de données par défaut ps_ par un nouveau préfixe arbitraire plus long. Néanmoins, sachez que cela est inutile contre les blackhats avec des compétences DBA senior en raison d'une vulnérabilité de conception dans DBMS.
+* Activez les règles OWASP 942 sur votre WAF (pare-feu d'application Web), sachez que vous risquez probablement de casser votre backoffice et que vous devrez pré-configurer certains contournements pour ces règles.
 
-## Timeline
+## Chronologie
 
-| Date | Action |
-| -- | -- |
-| 2023-02-24 | Discovery of the vulnerability by TouchWeb.fr |
-| 2023-02-25 | Vulnerability confirmed by Profileo |
-| 2023-02-28 | Patch created by Profileo and release of version 1.4.19 fixing the issue |
-| 2023-03-01 | Patch released to customers |
-| 2023-03-15 | Publication on security.profileo.com |
+| Date       | Action                                                  |
+|------------|---------------------------------------------------------|
+| 2023-02-24 | Vulnérabilité découverte par TouchWeb.fr               |
+| 2023-02-25 | Vulnérabilité confirmée par Profileo.com                  |
+| 2023-02-28 | Correctif créé par Profileo et sortie de la version 1.4.19 résolvant le problème |
+| 2023-03-01 | Correctif distribué aux clients                         |
+| 2023-03-15 | Publication sur security.profileo.com                   |
 
-## Links
+## Liens
 
-* [Profileo](https://www.profileo.com/fr/)
+* [Profileo.com](https://www.profileo.com/fr/)
 * [TouchWeb.fr](https://www.touchweb.fr/)
-* [National Vulnerability Database CVE-2023-27569](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-27569)
-* [National Vulnerability Database CVE-2023-27570](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-27570)
+* [Base de Données Nationale sur les Vulnérabilités - CVE-2023-27569](https://nvd.nist.gov/vuln/detail/CVE-2023-27569)
+* [Base de Données Nationale sur les Vulnérabilités - CVE-2023-27570](https://nvd.nist.gov/vuln/detail/CVE-2023-27570)
