@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+{{ if .Params.redirect }}
+<meta http-equiv="refresh" content="0; url={{ .Params.redirect }}" />
+{{ else }}
 <html lang="en">
 
 <head>
@@ -60,3 +63,4 @@
 </body>
 
 </html>
+{{ end }}

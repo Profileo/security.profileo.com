@@ -80,6 +80,8 @@ defaultContentLanguage = 'en'
 
   custom_css = ["css/custom.css"]
 
+  redirect = false
+
   [params.homepage_meta_tags]
     meta_description = "Explore Profileo Security's advisories, vulnerability reporting guidelines, and security policies. Stay informed and collaborate with our security team to enhance the safety of the digital environment."
     meta_og_title = "Profileo security • security.profileo.com"
